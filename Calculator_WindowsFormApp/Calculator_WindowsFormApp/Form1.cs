@@ -180,6 +180,7 @@ namespace Calculator_WindowsFormApp
 
         }
         #endregion
+
         private void Operation_Change()
         {
                 if (txtbox_Display.Text[txtbox_Display.TextLength - 1] == '+' || txtbox_Display.Text[txtbox_Display.TextLength - 1] == '-' || txtbox_Display.Text[txtbox_Display.TextLength - 1] == '*' || txtbox_Display.Text[txtbox_Display.TextLength - 1] == '/')
@@ -200,7 +201,6 @@ namespace Calculator_WindowsFormApp
             return status;
 
         }
-
         private void Result()
         {
             string[] Numbers;
@@ -232,5 +232,75 @@ namespace Calculator_WindowsFormApp
                 }
             }
         }
+
+        #region Button MauseEvent
+        
+        private void btn__OperationButton_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = (sender as Button);
+            button.BackColor = Color.FromArgb(19, 19, 19);
+        }
+
+        private void btn__NumberButton_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = (sender as Button);
+            button.BackColor = Color.FromArgb(6, 6, 6);
+        }
+
+        private void btn_MouseEnter(object sender, EventArgs e)
+        {
+            Button button = (sender as Button);
+            button.BackColor = Color.FromArgb(45,45,45);
+        }
+
+        private void btn_equals_MouseEnter(object sender, EventArgs e)
+        {
+            Button button = (sender as Button);
+            button.BackColor = Color.FromArgb(170, 30, 35);
+        }
+
+        private void btn_equals_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = (sender as Button);
+            button.BackColor = Color.FromArgb(111, 25, 33);
+        }
+
+        private void btn_Clear_MouseLeave(object sender, EventArgs e)
+        {
+            btn_Clear.BackColor = Color.FromArgb(250, 120, 50);
+        }
+
+        private void btn_Close_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = (sender as Button);
+            button.BackColor = Color.FromArgb(31, 31, 31);
+        }
+
+        #endregion
+        #region Form Drag&Drop
+        int Move;
+        int Mouse_X;
+        int Mouse_Y;
+        private void panel_up_MouseUp(object sender, MouseEventArgs e)
+        {
+            Move = 0;
+        }
+
+        private void panel_up_MouseDown(object sender, MouseEventArgs e)
+        {
+            Move = 1;
+            Mouse_X = e.X;
+            Mouse_Y = e.Y;
+        }
+        private void panel_up_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Move == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - Mouse_X, MousePosition.Y - Mouse_Y);
+            }
+        }
+        #endregion
+
+
     }
 }
