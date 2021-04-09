@@ -16,14 +16,14 @@ namespace Calculator_WindowsFormApp
         {
             InitializeComponent();
         }
-
         private void btn_Close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
         #region Number Button
-        private void btn_1_Click(object sender, EventArgs e)
+        private void btn_Number_Click(object sender, EventArgs e)
         {
+            Button NumberBtn = (sender as Button);
             Display_Font();
             if (txtbox_Display.Text == "0" || Number_Control(sender, e))
             {
@@ -31,167 +31,24 @@ namespace Calculator_WindowsFormApp
             }
             if (!Number_Cound())
             {
-                txtbox_Display.Text += "1";
-            }
-        }
-
-        private void btn_2_Click(object sender, EventArgs e)
-        {
-            Display_Font();
-            if (txtbox_Display.Text == "0" || Number_Control(sender, e))
-            {
-                txtbox_Display.Clear();
-            }
-            if (!Number_Cound())
-            {
-                txtbox_Display.Text += "2";
-            }
-        }
-
-        private void btn_3_Click(object sender, EventArgs e)
-        {
-            Display_Font();
-            if (txtbox_Display.Text == "0" || Number_Control(sender, e))
-            {
-                txtbox_Display.Clear();
-            }
-            if (!Number_Cound())
-            {
-                txtbox_Display.Text += "3";
-            }
-        }
-
-        private void btn_4_Click(object sender, EventArgs e)
-        {
-            Display_Font();
-            if (txtbox_Display.Text == "0" || Number_Control(sender, e))
-            {
-                txtbox_Display.Clear();
-            }
-            if (!Number_Cound())
-            {
-                txtbox_Display.Text += "4";
-            }
-        }
-
-        private void btn_5_Click(object sender, EventArgs e)
-        {
-            Display_Font();
-            if (txtbox_Display.Text == "0" || Number_Control(sender, e))
-            {
-                txtbox_Display.Clear();
-            }
-            if (!Number_Cound())
-            {
-                txtbox_Display.Text += "5";
-            }
-        }
-
-        private void btn_6_Click(object sender, EventArgs e)
-        {
-            Display_Font();
-            if (txtbox_Display.Text == "0" || Number_Control(sender, e))
-            {
-                txtbox_Display.Clear();
-            }
-            if (!Number_Cound())
-            {
-                txtbox_Display.Text += "6";
-            }
-        }
-
-        private void btn_7_Click(object sender, EventArgs e)
-        {
-            Display_Font();
-            if (txtbox_Display.Text == "0" || Number_Control(sender, e))
-            {
-                txtbox_Display.Clear();
-            }
-            if (!Number_Cound())
-            {
-                txtbox_Display.Text += "7";
-            }
-        }
-
-        private void btn_8_Click(object sender, EventArgs e)
-        {
-            Display_Font();
-            if (txtbox_Display.Text == "0" || Number_Control(sender, e))
-            {
-                txtbox_Display.Clear();
-            }
-            if (!Number_Cound())
-            {
-                txtbox_Display.Text += "8";
-            }
-        }
-
-        private void btn_9_Click(object sender, EventArgs e)
-        {
-            Display_Font();
-            if (txtbox_Display.Text == "0" || Number_Control(sender, e))
-            {
-                txtbox_Display.Clear();
-            }
-            if (!Number_Cound())
-            {
-                txtbox_Display.Text += "9";
-            }
-        }
-
-        private void btn_0_Click(object sender, EventArgs e)
-        {
-            Display_Font();
-            if (txtbox_Display.Text == "0" || Number_Control(sender, e))
-            {
-                txtbox_Display.Clear();
-            }
-            if (!Number_Cound())
-            {
-                txtbox_Display.Text += "0";
+                txtbox_Display.Text += NumberBtn.Text;
             }
         }
         #endregion
         #region Operation Button
-        private void btn_pls_Click(object sender, EventArgs e)
+        private void btn_Operation_Click(object sender, EventArgs e)
         {
+            Button OperationBtn = (sender as Button);
             Operation_Change();
             if (txtbox_Display.Text != "0" && Operation_Control() || Number_Control(sender, e))
             {
-                txtbox_Display.Text += "+";
+                txtbox_Display.Text += OperationBtn.Text;
             }
         }
-
-        private void btn_min_Click(object sender, EventArgs e)
-        {
-            Operation_Change();
-            if (txtbox_Display.Text != "0" && Operation_Control() || Number_Control(sender, e))
-            {
-                txtbox_Display.Text += "-";
-            }
-        }
-
-        private void btn_times_Click(object sender, EventArgs e)
-        {
-            Operation_Change();
-            if (txtbox_Display.Text != "0" && Operation_Control() || Number_Control(sender, e))
-            {
-                txtbox_Display.Text += "*";
-            }
-        }
-
-        private void btn_divided_Click(object sender, EventArgs e)
-        {
-            Operation_Change();
-            if (txtbox_Display.Text != "0" && Operation_Control() || Number_Control(sender, e))
-            {
-                txtbox_Display.Text += "/";
-            }
-        }
-
         private void btn_equals_Click(object sender, EventArgs e)
         {
-            if (txtbox_Display.Text != "0" || Number_Control(sender, e))
+            Number_Control(sender, e);
+            if (txtbox_Display.Text != "0")
             {
                 Result(sender, e);
             }
@@ -266,9 +123,14 @@ namespace Calculator_WindowsFormApp
                     Numbers = txtbox_Display.Text.Split(item);
                 }
             }
+            if (txtbox_Display.TextLength > 14 && Control)
+            {
+                MessageBox.Show("You entered an incorrect number.");
+            }
             if (txtbox_Display.Text.Length>15+Convert.ToInt32(Numbers[0].Length))
             {
                 Control = true;
+                MessageBox.Show("You entered an incorrect number.");
             }
             return Control;
         }
@@ -302,62 +164,29 @@ namespace Calculator_WindowsFormApp
                 {
                     case '+':
                         Numbers = txtbox_Display.Text.Split('+');
-                        if (Numbers[0].Length < 101 && Numbers[1].Length < 101)
-                        {
-                            result = Convert.ToDouble(Numbers[0]) + Convert.ToDouble(Numbers[1]);
-                            txtbox_Display.Text = result.ToString();
-                        }
-                        else
-                        {
-                            MessageBox.Show("You entered an incorrect number.");
-                            btn_Clear_Click(sender, e);
-                        }
+                        result = Convert.ToDouble(Numbers[0]) + Convert.ToDouble(Numbers[1]);
+                        txtbox_Display.Text = result.ToString();
                         break;
                     case '-':
                         Numbers = txtbox_Display.Text.Split('-');
-                        if (Numbers[0].Length < 101 && Numbers[1].Length < 101)
-                        {
-                            result = Convert.ToDouble(Numbers[0]) - Convert.ToDouble(Numbers[1]);
-                            txtbox_Display.Text = result.ToString();
-                        }
-                        else
-                        {
-                            MessageBox.Show("You entered an incorrect number.");
-                            btn_Clear_Click(sender, e);
-                        }
+                        result = Convert.ToDouble(Numbers[0]) - Convert.ToDouble(Numbers[1]);
+                        txtbox_Display.Text = result.ToString();
                         break;
                     case '*':
                         Numbers = txtbox_Display.Text.Split('*');
-                        if (Numbers[0].Length < 20 && Numbers[1].Length < 20)
-                        {
-                            result = Convert.ToDouble(Numbers[0]) * Convert.ToDouble(Numbers[1]);
-                            txtbox_Display.Text = result.ToString();
-                        }
-                        else
-                        {
-                            MessageBox.Show("You entered an incorrect number.");
-                            btn_Clear_Click(sender, e);
-                        }
+                        result = Convert.ToDouble(Numbers[0]) * Convert.ToDouble(Numbers[1]);
+                        txtbox_Display.Text = result.ToString();
                         break;
                     case '/':
                         Numbers = txtbox_Display.Text.Split('/');
-                        if (Numbers[0].Length < 101 && Numbers[1].Length < 101)
-                        {
-                            result = Convert.ToDouble(Numbers[0]) / Convert.ToDouble(Numbers[1]);
-                            txtbox_Display.Text = result.ToString();
-                        }
-                        else
-                        {
-                            MessageBox.Show("You entered an incorrect number.");
-                            btn_Clear_Click(sender, e);
-                        }
+                        result = Convert.ToDouble(Numbers[0]) / Convert.ToDouble(Numbers[1]);
+                        txtbox_Display.Text = result.ToString();
                         break;
                 }
             }
         }
 
-        #region Button MauseEvent
-        
+        #region Button MauseEvent       
         private void btn__OperationButton_MouseLeave(object sender, EventArgs e)
         {
             Button button = (sender as Button);
