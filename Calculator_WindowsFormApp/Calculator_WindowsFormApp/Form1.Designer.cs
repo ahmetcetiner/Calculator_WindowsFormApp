@@ -48,8 +48,8 @@
             this.txtbox_Display = new System.Windows.Forms.TextBox();
             this.btn_equals = new System.Windows.Forms.Button();
             this.panel_up = new System.Windows.Forms.Panel();
-            this.btn_Close = new System.Windows.Forms.Button();
             this.lbl_FormName = new System.Windows.Forms.Label();
+            this.btn_Close = new System.Windows.Forms.Button();
             this.panel_up.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -377,6 +377,17 @@
             this.panel_up.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_up_MouseMove);
             this.panel_up.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_up_MouseUp);
             // 
+            // lbl_FormName
+            // 
+            this.lbl_FormName.AutoSize = true;
+            this.lbl_FormName.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_FormName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
+            this.lbl_FormName.Location = new System.Drawing.Point(1, 7);
+            this.lbl_FormName.Name = "lbl_FormName";
+            this.lbl_FormName.Size = new System.Drawing.Size(66, 17);
+            this.lbl_FormName.TabIndex = 20;
+            this.lbl_FormName.Text = "Calculator";
+            // 
             // btn_Close
             // 
             this.btn_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -393,17 +404,6 @@
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             this.btn_Close.MouseEnter += new System.EventHandler(this.btn_equals_MouseEnter);
             this.btn_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
-            // 
-            // lbl_FormName
-            // 
-            this.lbl_FormName.AutoSize = true;
-            this.lbl_FormName.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FormName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
-            this.lbl_FormName.Location = new System.Drawing.Point(1, 7);
-            this.lbl_FormName.Name = "lbl_FormName";
-            this.lbl_FormName.Size = new System.Drawing.Size(66, 17);
-            this.lbl_FormName.TabIndex = 20;
-            this.lbl_FormName.Text = "Calculator";
             // 
             // frm_main
             // 
