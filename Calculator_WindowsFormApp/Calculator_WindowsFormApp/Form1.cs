@@ -51,6 +51,7 @@ namespace Calculator_WindowsFormApp
             if (txtbox_Display.Text != "0")
             {
                 Result(sender, e);
+                Display_Font();
             }
         }
 
@@ -94,7 +95,7 @@ namespace Calculator_WindowsFormApp
         }
         private void Display_Font()
         {
-            if (txtbox_Display.TextLength < 15)
+            if (txtbox_Display.TextLength < 16)
             {
                 txtbox_Display.Font = new Font("Microsoft YaHei UI", 20);
             }
@@ -102,7 +103,7 @@ namespace Calculator_WindowsFormApp
             {
                 txtbox_Display.Font = new Font("Microsoft YaHei UI", 15);
             }
-            else if (txtbox_Display.TextLength > 20)
+            else if (txtbox_Display.TextLength > 19)
             {
                 txtbox_Display.Font = new Font("Microsoft YaHei UI", 10);
             }
